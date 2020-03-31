@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.hibiki.galayun.mapper.WorkMapper">
+    <cache/>
+    <insert id="insert" keyColumn="work_id" keyProperty="workId" useGeneratedKeys="false">
+        <!--@mbg.generated-->
+        insert into work values
+        (#{work.workId,jdbcType=INTEGER},
+        #{work.className,jdbcType=VARCHAR},
+        #{work.sortId,jdbcType=VARCHAR},
+        #{work.chapterId,jdbcType=INTEGER},
+        #{work.chapterName,jdbcType=VARCHAR},
+        #{work.subjectName,jdbcType=VARCHAR},
+        #{work.isAssign,jdbcType=VARCHAR},
+        #{subjectId,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertList">
+        insert into work values
+        <foreach collection="works" item="work" separator=",">
+            (#{work.workId,jdbcType=INTEGER},
+            #{work.className,jdbcType=VARCHAR},
+            #{work.sortId,jdbcType=VARCHAR},
+            #{work.chapterId,jdbcType=INTEGER},
+            #{work.chapterName,jdbcType=VARCHAR},
+            #{work.subjectName,jdbcType=VARCHAR},
+            #{work.isAssign,jdbcType=VARCHAR},
+            #{subjectId,jdbcType=INTEGER})
+        </foreach>
+    </insert>
+    <select id="listBySubjectIdWorks" resultType="me.hibiki.galayun.domain.Work">
+        select * from work where subject_id = #{subjectId}
+    </select>
+    <select id="countBySubjectId" resultType="_int">
+        select count(work_id) from work where subject_id = #{subjectId}
+    </select>
+</mapper>

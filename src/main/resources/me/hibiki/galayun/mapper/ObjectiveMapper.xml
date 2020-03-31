@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.hibiki.galayun.mapper.ObjectiveMapper">
+    <cache/>
+    <insert id="insert" keyColumn="objective_id" keyProperty="objectiveId" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into objective (objective_title, objective_option_a,
+        objective_option_image_a, objective_option_b,
+        objective_option_image_b, objective_option_c,
+        objective_option_image_c, objective_option_d,
+        objective_option_image_d, objective_answer,
+        chapter_id) values
+        (#{objective.objectiveTitle,jdbcType=VARCHAR},
+        #{objective.objectiveOptionA,jdbcType=VARCHAR},
+        #{objective.objectiveOptionImageA,jdbcType=VARCHAR},
+        #{objective.objectiveOptionB,jdbcType=VARCHAR},
+        #{objective.objectiveOptionImageB,jdbcType=VARCHAR},
+        #{objective.objectiveOptionC,jdbcType=VARCHAR},
+        #{objective.objectiveOptionImageC,jdbcType=VARCHAR},
+        #{objective.objectiveOptionD,jdbcType=VARCHAR},
+        #{objective.objectiveOptionImageD,jdbcType=VARCHAR},
+        #{objective.objectiveAnswer,jdbcType=VARCHAR},
+        #{chapterId,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertList">
+        insert into objective (objective_title, objective_option_a,objective_option_image_a,
+        objective_option_b,objective_option_image_b, objective_option_c,objective_option_image_c,
+        objective_option_d,objective_option_image_d, objective_answer,chapter_id) values
+        <foreach collection="objectives" item="objective" separator=",">
+            (#{objective.objectiveTitle,jdbcType=VARCHAR},
+            #{objective.objectiveOptionA,jdbcType=VARCHAR},
+            #{objective.objectiveOptionImageA,jdbcType=VARCHAR},
+            #{objective.objectiveOptionB,jdbcType=VARCHAR},
+            #{objective.objectiveOptionImageB,jdbcType=VARCHAR},
+            #{objective.objectiveOptionC,jdbcType=VARCHAR},
+            #{objective.objectiveOptionImageC,jdbcType=VARCHAR},
+            #{objective.objectiveOptionD,jdbcType=VARCHAR},
+            #{objective.objectiveOptionImageD,jdbcType=VARCHAR},
+            #{objective.objectiveAnswer,jdbcType=VARCHAR},
+            #{chapterId})
+        </foreach>
+    </insert>
+
+    <select id="listByChapterIdObjectives" resultType="me.hibiki.galayun.domain.Objective">
+        select * from objective where chapter_id = #{chapterId}
+    </select>
+    <select id="listObjectives" resultType="me.hibiki.galayun.domain.Objective">
+        select * from objective
+    </select>
+
+    <select id="listBySearchObjectives" resultType="me.hibiki.galayun.domain.Objective" useCache="false">
+        <bind name="keyword" value="'%'+_parameter+'%'"/>
+        select * from objective where objective_title like #{keyword}
+    </select>
+
+</mapper>

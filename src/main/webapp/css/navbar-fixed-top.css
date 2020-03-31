@@ -1,0 +1,48 @@
+body {
+    padding-top: 70px;
+}
+
+.jumbotron p {
+    margin: 0 0;
+}
+
+.work {
+    cursor: pointer;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.title > p {
+    display: inline;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.option {
+    font-size: 18px;
+}
+
+.correct {
+    font-size: 18px;
+    color: red;
+}
+
+.objective, .subjective {
+    font-size: 20px;
+}
+
+.copyM {
+    cursor: pointer;
+    float: right;
+}
+
+.copy {
+    cursor: pointer;
+    float: right;
+    display: none;
+}
