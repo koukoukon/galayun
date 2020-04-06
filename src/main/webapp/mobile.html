@@ -34,12 +34,6 @@
                 <li><a href="javascript:void(0)" id="spring">Spring框架</a></li>
                 <li><a href="javascript:void(0)" id="mybatis">Mybatis框架</a></li>
                 <li><a href="javascript:void(0)" id="springMvc">SpringMVC框架</a></li>
-                <form action="/workManager" class="navbar-form navbar-left" method="post" role="search">
-                    <div class="form-group">
-                        <input class="form-control" id="keyword" placeholder="请输入需要搜索的题目" type="text">
-                    </div>
-                    <button class="btn btn-default" type="submit">搜索</button>
-                </form>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="index.html">桌面端<span class="sr-only">(current)</span></a></li>
@@ -48,6 +42,14 @@
     </div>
 </nav>
 <div class="container">
+    <form action="/workManager" method="post" role="search">
+        <div class="input-group">
+            <input id="keyword" name="keyword" type="text" class="form-control" placeholder="请输入需要搜索的题目">
+            <span class="input-group-btn">
+        <button id="search" type="submit" class="btn btn-default" type="submit">搜索</button>
+        </span>
+        </div>
+    </form>
     <div class="jumbotron">
     </div>
 </div>
