@@ -13,7 +13,7 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
     <context:component-scan base-package="me.hibiki.galayun"/>
-    <context:property-placeholder location="jdbc-config.properties"/>
+    <context:property-placeholder location="classpath:jdbc-config.properties"/>
     <bean id="driverManagerDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -23,5 +23,33 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="driverManagerDataSource"/>
     </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="driverManagerDataSource"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+    <bean id="workMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="mapperInterface" value="me.hibiki.galayun.mapper.WorkMapper"/>
+    </bean>
+    <bean id="objectiveMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="mapperInterface" value="me.hibiki.galayun.mapper.ObjectiveMapper"/>
+    </bean>
+    <bean id="subjectiveMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="mapperInterface" value="me.hibiki.galayun.mapper.SubjectiveMapper"/>
+    </bean>
+    <tx:advice id="myAdvice">
+        <tx:attributes>
+<!--            未配置默认为propagation="REQUIRED" read-only="false"-->
+            <tx:method name="*"/>
+            <tx:method name="list*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="count*" propagation="SUPPORTS" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="myPointcut" expression="execution(* me.hibiki.galayun.service.impl.*.*(..))"/>
+        <aop:advisor id="myAdvisor" advice-ref="myAdvice" pointcut-ref="myPointcut"/>
+    </aop:config>
 
 </beans>

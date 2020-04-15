@@ -3,21 +3,18 @@ package me.hibiki.galayun.service.impl;
 import me.hibiki.galayun.domain.Subjective;
 import me.hibiki.galayun.mapper.SubjectiveMapper;
 import me.hibiki.galayun.service.SubjectiveService;
-import me.hibiki.galayun.util.DatabaseHelper;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * @author 高弘昆
  * @date 2020/3/26 23:29
  */
-//@Service
+@Service("subjectiveService")
 public class SubjectiveServiceImpl implements SubjectiveService {
-
-    //    @Resource
-    private SqlSessionFactory sqlSessionFactory = DatabaseHelper.getSqlSessionFactory();
+    @Resource
     private SubjectiveMapper subjectiveMapper;
 
     @Override
@@ -27,21 +24,12 @@ public class SubjectiveServiceImpl implements SubjectiveService {
 
     @Override
     public List<Subjective> listByChapterIdSubjectives(Integer chapterId) {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        subjectiveMapper = sqlSession.getMapper(SubjectiveMapper.class);
-        List<Subjective> subjectives = subjectiveMapper.listByChapterIdSubjectives(chapterId);
-        sqlSession.close();
-        return subjectives;
+        return subjectiveMapper.listByChapterIdSubjectives(chapterId);
     }
-
 
     @Override
     public List<Subjective> listBySearchSubjectives(String keyword) {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        SubjectiveMapper subjectiveMapper = sqlSession.getMapper(SubjectiveMapper.class);
-        List<Subjective> subjectives = subjectiveMapper.listBySearchSubjectives(keyword);
-        sqlSession.close();
-        return subjectives;
+        return subjectiveMapper.listBySearchSubjectives(keyword);
     }
 
 }

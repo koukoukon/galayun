@@ -12,14 +12,14 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.apache.ibatis.session.SqlSession;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 
 /**
  * @author 高弘昆
- * @Date 2020/3/3 23:39
+ * @date 2020/3/3 23:39
  */
 public class RequestWorkDetail {
     private String json;
@@ -31,7 +31,7 @@ public class RequestWorkDetail {
      * 获取作业详情
      *
      * @param chapterId 章节id
-     * @return
+     * @return json
      */
     public String getJson(int chapterId) {
 
@@ -68,7 +68,10 @@ public class RequestWorkDetail {
         return json;
     }
 
-
+    @Resource
+    private ObjectiveMapper objectiveMapper;
+    @Resource
+    private SubjectiveMapper subjectiveMapper;
     /**
      * 获取作业详细记录并添加
      *
@@ -81,10 +84,6 @@ public class RequestWorkDetail {
             System.out.println("客观题章节结束id不能为null");
             return;
         }
-        SqlSession sqlSession = DatabaseHelper.getSqlSessionFactory().openSession();
-        ObjectiveMapper objectiveMapper = sqlSession.getMapper(ObjectiveMapper.class);
-        SubjectiveMapper subjectiveMapper = sqlSession.getMapper(SubjectiveMapper.class);
-
         for (int i = start; i <= end; i++) {
             System.out.println("当前在第" + i + "章节");
             String json = this.getJson(i);
@@ -105,7 +104,5 @@ public class RequestWorkDetail {
             int s = subjectiveMapper.insertList(subjectives, i);
             System.out.println("添加了" + s + "条主观题");
         }
-        sqlSession.commit();
-        sqlSession.close();
     }
 }

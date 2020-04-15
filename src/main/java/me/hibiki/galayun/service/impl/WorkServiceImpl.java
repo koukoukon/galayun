@@ -3,10 +3,9 @@ package me.hibiki.galayun.service.impl;
 import me.hibiki.galayun.domain.Work;
 import me.hibiki.galayun.mapper.WorkMapper;
 import me.hibiki.galayun.service.WorkService;
-import me.hibiki.galayun.util.DatabaseHelper;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,13 +15,12 @@ import java.util.List;
  * @date 2020/3/26 22:15
  */
 
-//@Service
+@Service("workService")
 public class WorkServiceImpl implements WorkService {
 
-    //    @Resource
-    //    private WorkMapper workMapper;
-    private SqlSessionFactory sqlSessionFactory = DatabaseHelper.getSqlSessionFactory();
+    @Resource
     private WorkMapper workMapper;
+
 
     @Override
     public int insert(Work record, Integer subjectId) {
@@ -31,19 +29,11 @@ public class WorkServiceImpl implements WorkService {
 
     @Override
     public List<Work> listBySubjectIdWorks(Integer subjectId) {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        workMapper = sqlSession.getMapper(WorkMapper.class);
-        List<Work> works = workMapper.listBySubjectIdWorks(subjectId);
-        sqlSession.close();
-        return works;
+        return workMapper.listBySubjectIdWorks(subjectId);
     }
 
     @Override
     public int countBySubjectId(Integer subjectId) {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        workMapper = sqlSession.getMapper(WorkMapper.class);
-        int count = workMapper.countBySubjectId(subjectId);
-        sqlSession.close();
-        return count;
+        return workMapper.countBySubjectId(subjectId);
     }
 }
