@@ -16,48 +16,33 @@ import java.io.Serializable;
  */
 @Data
 public class Subjective implements Serializable {
-
-//    /**
-//     * 主观题id
-//     */
-//    @Expose
-//    private Integer subjectiveId;
-
     /**
      * 主观题id
      */
-    @Expose
+    @Expose(serialize = false)
     private Integer subjectiveId;
-
     /**
      * 主观题标题
      */
+    @Expose
     @SerializedName(value = "subjectiveTitle", alternate = {"Title"})
     private String subjectiveTitle;
-
     /**
      * 主观题解析类型
      */
+    @Expose
     @SerializedName(value = "subjectiveParsingType", alternate = {"ParsingType"})
     private Integer subjectiveParsingType;
-
     /**
      * 主观题解答
      */
+    @Expose
     @SerializedName(value = "subjectiveParsing", alternate = {"Parsing"})
     private String subjectiveParsing;
-
-
-//    /**
-//     * 章节id
-//     */
-//    @Expose
-//    private Integer chapterId;
-
     /**
      * 章节id
      */
-    @Expose
+    @Expose(serialize = false)
     private Integer chapterId;
 
 

@@ -1,5 +1,6 @@
 package me.hibiki.galayun.domain;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
@@ -17,11 +18,13 @@ public class WorkExtend implements Serializable {
     /**
      * 作业集合
      */
+    @Expose
     @SerializedName(value = "works", alternate = {"rows"})
     private List<Work> works;
     /**
      * 作业总记录条数
      */
+    @Expose
     @SerializedName(value = "count", alternate = {"total"})
     private int count;
 }

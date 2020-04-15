@@ -1,11 +1,12 @@
 package me.hibiki.galayun.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import me.hibiki.galayun.domain.*;
-import me.hibiki.galayun.service.ObjectiveServiceImpl;
-import me.hibiki.galayun.service.SubjectiveServiceImpl;
+import me.hibiki.galayun.service.impl.ObjectiveServiceImpl;
+import me.hibiki.galayun.service.impl.SubjectiveServiceImpl;
 import me.hibiki.galayun.service.WorkService;
-import me.hibiki.galayun.service.WorkServiceImpl;
+import me.hibiki.galayun.service.impl.WorkServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "WorkListServlet", urlPatterns = "/workManager")
+@WebServlet(name = "WorkListServlet", urlPatterns = "/work")
 public class WorkManager extends BaseServlet {
     /**
      * 获取单一科目下的作业列表
@@ -32,8 +33,11 @@ public class WorkManager extends BaseServlet {
         WorkExtend workExtend = new WorkExtend();
         workExtend.setWorks(works);
         workExtend.setCount(count);
-        Gson gson = new Gson();
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.excludeFieldsWithoutExposeAnnotation();
+        Gson gson = gsonBuilder.create();
         String json = gson.toJson(workExtend);
+        System.out.println(json);
         try (PrintWriter writer = response.getWriter()) {
             writer.print(json);
             writer.flush();
@@ -55,7 +59,9 @@ public class WorkManager extends BaseServlet {
         WorkDetail workDetail = new WorkDetail();
         workDetail.setObjectives(objectives);
         workDetail.setSubjectives(subjectives);
-        Gson gson = new Gson();
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.excludeFieldsWithoutExposeAnnotation();
+        Gson gson = gsonBuilder.create();
         String json = gson.toJson(workDetail);
         try (PrintWriter writer = response.getWriter()) {
             writer.print(json);
@@ -77,7 +83,9 @@ public class WorkManager extends BaseServlet {
         WorkDetail workDetail = new WorkDetail();
         workDetail.setObjectives(objectives);
         workDetail.setSubjectives(subjectives);
-        Gson gson = new Gson();
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.excludeFieldsWithoutExposeAnnotation();
+        Gson gson = gsonBuilder.create();
         String json = gson.toJson(workDetail);
         try (PrintWriter writer = response.getWriter()) {
             writer.print(json);

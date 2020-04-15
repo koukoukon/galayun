@@ -2,7 +2,7 @@ var copy = null;
 var saveKeyword = null;
 $(function () {
     $.ajaxSetup({
-        url: "workManager",
+        url: "work",
         type: "post",
         dataType: "json"
     });

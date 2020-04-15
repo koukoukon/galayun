@@ -3,7 +3,7 @@ var saveKeyword = null;
 $(function () {
     //ajax全局设置
     $.ajaxSetup({
-        url: "workManager",
+        url: "work",
         type: "post",
         dataType: "json"
     });

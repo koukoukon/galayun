@@ -1,7 +1,8 @@
-package me.hibiki.galayun.service;
+package me.hibiki.galayun.service.impl;
 
 import me.hibiki.galayun.domain.Subjective;
 import me.hibiki.galayun.mapper.SubjectiveMapper;
+import me.hibiki.galayun.service.SubjectiveService;
 import me.hibiki.galayun.util.DatabaseHelper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

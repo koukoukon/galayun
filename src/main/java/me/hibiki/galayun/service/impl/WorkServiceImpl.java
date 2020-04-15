@@ -1,7 +1,8 @@
-package me.hibiki.galayun.service;
+package me.hibiki.galayun.service.impl;
 
 import me.hibiki.galayun.domain.Work;
 import me.hibiki.galayun.mapper.WorkMapper;
+import me.hibiki.galayun.service.WorkService;
 import me.hibiki.galayun.util.DatabaseHelper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

@@ -15,125 +15,74 @@ import java.io.Serializable;
  */
 @Data
 public class Objective implements Serializable {
-
-
-//    /**
-//     * 客观题id
-//     */
-//    @Expose
-//    private Integer objectiveId;
-
     /**
      * 客观题id
      */
-    @Expose
+    @Expose(serialize = false)
     private Integer objectiveId;
-
-
     /**
      * 客观题标题
      */
+    @Expose
     @SerializedName(value = "objectiveTitle", alternate = {"Title"})
     private String objectiveTitle;
-
     /**
      * 客观题选项A
      */
+    @Expose
     @SerializedName(value = "objectiveOptionA", alternate = {"Item1"})
     private String objectiveOptionA;
-
-
-//    /**
-//     * 客观题选项A图片
-//     */
-//    @SerializedName(value = "objectiveOptionImageA", alternate = {"Image1"})
-//    private String objectiveOptionImageA;
-
     /**
      * 客观题选项A图片
      */
+    @Expose(serialize = false)
     @SerializedName(value = "objectiveOptionImageA", alternate = {"Image1"})
     private String objectiveOptionImageA;
-
-
     /**
      * 客观题选项B
      */
+    @Expose
     @SerializedName(value = "objectiveOptionB", alternate = {"Item2"})
     private String objectiveOptionB;
-
-
-//    /**
-//     * 客观题选项B图片
-//     */
-//    @SerializedName(value = "objectiveOptionImageB", alternate = {"Image2"})
-//    private String objectiveOptionImageB;
-
     /**
      * 客观题选项B图片
      */
+    @Expose(serialize = false)
     @SerializedName(value = "objectiveOptionImageB", alternate = {"Image2"})
     private String objectiveOptionImageB;
-
-
     /**
      * 客观题选项C
      */
+    @Expose
     @SerializedName(value = "objectiveOptionC", alternate = {"Item3"})
     private String objectiveOptionC;
-
-
-//    /**
-//     * 客观题选项C图片
-//     */
-//    @SerializedName(value = "objectiveOptionImageC", alternate = {"Image3"})
-//    private String objectiveOptionImageC;
-
     /**
      * 客观题选项C图片
      */
+    @Expose(serialize = false)
     @SerializedName(value = "objectiveOptionImageC", alternate = {"Image3"})
     private String objectiveOptionImageC;
-
-
     /**
      * 客观题选项D
      */
+    @Expose
     @SerializedName(value = "objectiveOptionD", alternate = {"Item4"})
     private String objectiveOptionD;
-
-
-//    /**
-//     * 客观题选项D图片
-//     */
-//    @SerializedName(value = "objectiveOptionImageD", alternate = {"Image4"})
-//    private String objectiveOptionImageD;
-
     /**
      * 客观题选项D图片
      */
+    @Expose(serialize = false)
     @SerializedName(value = "objectiveOptionImageD", alternate = {"Image4"})
     private String objectiveOptionImageD;
-
-
     /**
      * 客观题解答
      */
+    @Expose
     @SerializedName(value = "objectiveAnswer", alternate = {"Answer"})
     private String objectiveAnswer;
-
-
-//    /**
-//     * 章节id
-//     */
-//    @Expose
-//    private Integer chapterId;
-
     /**
      * 章节id
      */
-    @Expose
+    @Expose(serialize = false)
     private Integer chapterId;
-
-
 }

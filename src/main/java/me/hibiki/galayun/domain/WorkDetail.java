@@ -1,5 +1,6 @@
 package me.hibiki.galayun.domain;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
@@ -14,15 +15,15 @@ import java.util.List;
  */
 @Data
 public class WorkDetail implements Serializable {
-
     /**
      * 注解@SerializedName value用于指定序列化后的字段名  alternate用于反序列化传参
      * objectiveQuestions : 客观题集合
      * subjectiveQuestions : 主观题集合
      */
+    @Expose
     @SerializedName(value = "objectives", alternate = {"objs"})
     private List<Objective> objectives;
-
+    @Expose
     @SerializedName(value = "subjectives", alternate = {"subs"})
     private List<Subjective> subjectives;
 }
