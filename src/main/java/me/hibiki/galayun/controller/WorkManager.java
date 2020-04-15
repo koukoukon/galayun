@@ -37,7 +37,6 @@ public class WorkManager extends BaseServlet {
         gsonBuilder.excludeFieldsWithoutExposeAnnotation();
         Gson gson = gsonBuilder.create();
         String json = gson.toJson(workExtend);
-        System.out.println(json);
         try (PrintWriter writer = response.getWriter()) {
             writer.print(json);
             writer.flush();
