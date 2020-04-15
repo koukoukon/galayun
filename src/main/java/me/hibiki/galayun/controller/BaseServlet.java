@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
+/**
+ * @author 高弘昆
+ * @date 2020/4/15 10:17
+ */
 @WebServlet(name = "BaseServlet")
 public class BaseServlet extends HttpServlet {
     @Override
