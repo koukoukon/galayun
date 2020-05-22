@@ -23,8 +23,13 @@ public class WorkServiceImpl implements WorkService {
 
 
     @Override
-    public int insert(Work record, Integer subjectId) {
-        return workMapper.insert(record, subjectId);
+    public int insert(Work work, Integer subjectId) {
+        return workMapper.insert(work, subjectId);
+    }
+
+    @Override
+    public int insertList(List<Work> works, Integer subjectId) {
+        return workMapper.insertList(works,subjectId);
     }
 
     @Override

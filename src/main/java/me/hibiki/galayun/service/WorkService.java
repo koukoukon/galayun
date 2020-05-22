@@ -12,7 +12,9 @@ import java.util.List;
  */
 public interface WorkService {
 
-    int insert(Work record, Integer subjectId);
+    int insert(Work work, Integer subjectId);
+
+    int insertList(List<Work> works,Integer subjectId);
 
     /**
      * 获取某一科目下的作业记录集合

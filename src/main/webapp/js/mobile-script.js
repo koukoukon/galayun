@@ -141,37 +141,41 @@ function parseWorkDetailJson(data) {
         if (i == "objectives") {
             html += "<div id='objectiveQuestion'>";
             html += "<div class='objective'>客观题</div>";
-            html += "<div id='objectives'>";
-            for (var j in data[i]) {
-                html += "<pre class='title'>" + (parseInt(j) + 1) + "." + data[i][j]["objectiveTitle"] + "</pre>";
-                html += "<pre>";
-                switch (data[i][j]["objectiveAnswer"]) {
-                    case "1":
-                        html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionA"] + "</div></div>";
-                        break;
-                    case "2":
-                        html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionB"] + "</div></div>";
-                        break;
-                    case "3":
-                        html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionC"] + "</div></div>";
-                        break;
-                    case "4":
-                        html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionD"] + "</div></div>";
-                        break;
-                    case "1、2":
-                        html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionA"] + "</div></div>";
-                        html += "<div class='items'><div class='option correct'>" + "B." + data[i][j]["objectiveOptionB"] + "</div></div>";
-                        break;
-                    case "1，3":
-                        html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionA"] + "</div></div>";
-                        html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionC"] + "</div></div>";
-                        break;
+            if (data[i]==null){
+                html +="<div>客观题为空</div>"
+            }else {
+                html += "<div id='objectives'>";
+                for (var j in data[i]) {
+                    html += "<pre class='title'>" + (parseInt(j) + 1) + "." + data[i][j]["objectiveTitle"] + "</pre>";
+                    html += "<pre>";
+                    switch (data[i][j]["objectiveAnswer"]) {
+                        case "1":
+                            html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionA"] + "</div></div>";
+                            break;
+                        case "2":
+                            html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionB"] + "</div></div>";
+                            break;
+                        case "3":
+                            html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionC"] + "</div></div>";
+                            break;
+                        case "4":
+                            html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionD"] + "</div></div>";
+                            break;
+                        case "1、2":
+                            html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionA"] + "</div></div>";
+                            html += "<div class='items'><div class='option correct'>" + "B." + data[i][j]["objectiveOptionB"] + "</div></div>";
+                            break;
+                        case "1，3":
+                            html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionA"] + "</div></div>";
+                            html += "<div class='items'><div class='option correct'>" + data[i][j]["objectiveOptionC"] + "</div></div>";
+                            break;
+                    }
+                    html += "</pre>";
                 }
-                html += "</pre>";
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
             }
-            html += "</div>";
-            html += "</div>";
-            html += "</div>";
         } else if (i == "subjectives") {
             html += "<div id='subjectiveQuestion'>";
             html += "<div class='subjective'>主观题</div>";

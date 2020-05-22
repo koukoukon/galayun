@@ -12,6 +12,8 @@ public interface SubjectiveService {
 
     int insert(Subjective record, Integer chapterId);
 
+    int insertList(List<Subjective> subjectives,int chapterId);
+
     List<Subjective> listByChapterIdSubjectives(Integer chapterId);
 
     List<Subjective> listBySearchSubjectives(String keyword);

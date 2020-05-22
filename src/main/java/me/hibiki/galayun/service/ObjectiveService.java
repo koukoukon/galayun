@@ -11,6 +11,8 @@ import java.util.List;
 public interface ObjectiveService {
     int insert(Objective record, Integer chapterId);
 
+    int insertList(List<Objective> objectives,int chapterId);
+
     List<Objective> listByChapterIdObjectives(Integer chapterId);
 
     List<Objective> listBySearchObjectives(String keyword);

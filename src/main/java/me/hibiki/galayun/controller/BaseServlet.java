@@ -25,6 +25,11 @@ public class BaseServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         req.setCharacterEncoding("UTF-8");
         String handler = req.getParameter("handler");
         try {

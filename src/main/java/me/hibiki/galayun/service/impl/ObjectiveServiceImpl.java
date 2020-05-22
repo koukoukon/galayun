@@ -19,8 +19,13 @@ public class ObjectiveServiceImpl implements ObjectiveService {
     private ObjectiveMapper objectiveMapper;
 
     @Override
-    public int insert(Objective record, Integer chapterId) {
-        return objectiveMapper.insert(record, chapterId);
+    public int insert(Objective objective, Integer chapterId) {
+        return objectiveMapper.insert(objective, chapterId);
+    }
+
+    @Override
+    public int insertList(List<Objective> objectives, int chapterId) {
+        return objectiveMapper.insertList(objectives,chapterId);
     }
 
     @Override

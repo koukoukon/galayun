@@ -18,8 +18,13 @@ public class SubjectiveServiceImpl implements SubjectiveService {
     private SubjectiveMapper subjectiveMapper;
 
     @Override
-    public int insert(Subjective record, Integer chapterId) {
-        return subjectiveMapper.insert(record, chapterId);
+    public int insert(Subjective subjective, Integer chapterId) {
+        return subjectiveMapper.insert(subjective, chapterId);
+    }
+
+    @Override
+    public int insertList(List<Subjective> subjectives, int chapterId) {
+        return subjectiveMapper.insertList(subjectives,chapterId);
     }
 
     @Override
