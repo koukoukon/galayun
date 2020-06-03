@@ -19,16 +19,16 @@ public interface WorkService {
     /**
      * 获取某一科目下的作业记录集合
      *
-     * @param subjectId
-     * @return
+     * @param subjectId 科目编号
+     * @return 作业列表
      */
     List<Work> listBySubjectIdWorks(Integer subjectId);
 
     /**
      * 统计某一科目下的作业总次数
      *
-     * @param subjectId
-     * @return
+     * @param subjectId 科目编号
+     * @return 总次数
      */
     int countBySubjectId(Integer subjectId);
 

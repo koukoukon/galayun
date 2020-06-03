@@ -141,7 +141,7 @@ function parseWorkDetailJson(data) {
         if (i == "objectives") {
             html += "<div id='objectiveQuestion'>";
             html += "<div class='objective'>客观题</div>";
-            if (data[i]==null){
+            if (data[i].length==0){
                 html +="<div>客观题为空</div>"
             }else {
                 html += "<div id='objectives'>";
@@ -181,7 +181,7 @@ function parseWorkDetailJson(data) {
             html += "<div class='subjective'>主观题</div>";
             html += "<div id='subjectives'>";
             for (j in data[i]) {
-                html += "<pre class='title'>" + (parseInt(j) + 1) + "." + data[i][j]["subjectiveTitle"] + "<div class='copyM glyphicon glyphicon-copy'>Copy</div></pre>";
+                html += "<pre clas s='title'>" + (parseInt(j) + 1) + "." + data[i][j]["subjectiveTitle"] + "<div class='copyM glyphicon glyphicon-copy'>Copy</div></pre>";
                 html += "<pre class='correct'>" + data[i][j]["subjectiveParsing"] + "<input type='hidden' value='" + data[i][j]["subjectiveParsing"] + "'></pre>";
             }
             html += "</div>";
